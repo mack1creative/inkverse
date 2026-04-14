@@ -7,9 +7,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1a1a1a',
-        accent: '#ff4d4d',
-        surface: '#f5f5f5',
+        dark: {
+          900: '#0a0a0a',
+          800: '#141414',
+          700: '#1f1f1f',
+          600: '#2a2a2a',
+        },
+        accent: '#e63946',
+        accenthover: '#c1121f',
       },
     },
   },

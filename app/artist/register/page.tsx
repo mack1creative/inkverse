@@ -35,10 +35,10 @@ export default function ArtistRegister() {
     <div className="max-w-2xl mx-auto px-4 py-12">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold mb-2">Artist Registration</h1>
-        <p className="text-gray-600">Join InkVerse and get booked more</p>
+        <p className="text-gray-400">Join InkVerse and get booked more</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-md space-y-6">
+      <form onSubmit={handleSubmit} className="bg-dark-800 p-8 rounded-xl shadow-md border border-dark-700 space-y-6">
         <div>
           <label className="block text-sm font-medium mb-2">Email *</label>
           <input 
@@ -122,7 +122,7 @@ export default function ArtistRegister() {
                 className={`px-3 py-2 rounded-lg text-sm transition ${
                   form.specializations.includes(style)
                     ? 'bg-accent text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-dark-700 text-gray-300 hover:bg-dark-600'
                 }`}
               >
                 {style}
@@ -145,7 +145,7 @@ export default function ArtistRegister() {
           Create Artist Profile
         </button>
 
-        <p className="text-center text-gray-600">
+        <p className="text-center text-gray-400">
           Already have an account? <Link href="/artist/login" className="text-accent hover:underline">Login</Link>
         </p>
       </form>

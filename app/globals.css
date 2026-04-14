@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 26, 26, 26;
-  --background-start-rgb: 245, 245, 245;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 10, 10, 10;
 }
 
 body {
@@ -13,17 +13,29 @@ body {
 }
 
 .btn-primary {
-  @apply bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition;
+  @apply bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-accenthover transition;
 }
 
 .btn-secondary {
-  @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition;
+  @apply bg-dark-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-dark-600 transition;
 }
 
 .input {
-  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none;
+  @apply w-full px-4 py-3 border border-dark-600 bg-dark-800 text-white rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none;
 }
 
 .card {
-  @apply bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition;
+  @apply bg-dark-800 rounded-xl shadow-lg overflow-hidden hover:bg-dark-700 transition;
+}
+
+.text-gray-400 {
+  @apply text-gray-400;
+}
+
+.text-gray-500 {
+  @apply text-gray-500;
+}
+
+.text-gray-600 {
+  @apply text-gray-500;
 }

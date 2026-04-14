@@ -22,49 +22,49 @@ export default function ArtistDashboard() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <p className="text-gray-500 text-sm">Total Bookings</p>
+        <div className="bg-dark-800 p-6 rounded-xl border border-dark-700">
+          <p className="text-gray-400 text-sm">Total Bookings</p>
           <p className="text-3xl font-bold">{stats.totalBookings}</p>
         </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <p className="text-gray-500 text-sm">Pending</p>
+        <div className="bg-dark-800 p-6 rounded-xl border border-dark-700">
+          <p className="text-gray-400 text-sm">Pending</p>
           <p className="text-3xl font-bold text-accent">{stats.pendingBookings}</p>
         </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <p className="text-gray-500 text-sm">Total Earnings</p>
+        <div className="bg-dark-800 p-6 rounded-xl border border-dark-700">
+          <p className="text-gray-400 text-sm">Total Earnings</p>
           <p className="text-3xl font-bold">${stats.totalEarnings.toLocaleString()}</p>
         </div>
-        <div className="bg-white p-6 rounded-xl shadow-sm">
-          <p className="text-gray-500 text-sm">Profile Views</p>
+        <div className="bg-dark-800 p-6 rounded-xl border border-dark-700">
+          <p className="text-gray-400 text-sm">Profile Views</p>
           <p className="text-3xl font-bold">{stats.profileViews}</p>
         </div>
       </div>
 
       {/* Appointments */}
-      <div className="bg-white rounded-xl shadow-md overflow-hidden">
-        <div className="p-6 border-b">
+      <div className="bg-dark-800 rounded-xl shadow-md border border-dark-700 overflow-hidden">
+        <div className="p-6 border-b border-dark-700">
           <h2 className="text-xl font-bold">Upcoming Appointments</h2>
         </div>
         <table className="w-full">
-          <thead className="bg-gray-50">
+          <thead className="bg-dark-700">
             <tr>
-              <th className="text-left p-4 text-gray-500 font-medium">Client</th>
-              <th className="text-left p-4 text-gray-500 font-medium">Design</th>
-              <th className="text-left p-4 text-gray-500 font-medium">Date</th>
-              <th className="text-left p-4 text-gray-500 font-medium">Status</th>
-              <th className="text-left p-4 text-gray-500 font-medium">Deposit</th>
-              <th className="text-left p-4 text-gray-500 font-medium">Actions</th>
+              <th className="text-left p-4 text-gray-400 font-medium">Client</th>
+              <th className="text-left p-4 text-gray-400 font-medium">Design</th>
+              <th className="text-left p-4 text-gray-400 font-medium">Date</th>
+              <th className="text-left p-4 text-gray-400 font-medium">Status</th>
+              <th className="text-left p-4 text-gray-400 font-medium">Deposit</th>
+              <th className="text-left p-4 text-gray-400 font-medium">Actions</th>
             </tr>
           </thead>
           <tbody>
             {appointments.map(apt => (
-              <tr key={apt.id} className="border-t">
+              <tr key={apt.id} className="border-t border-dark-700">
                 <td className="p-4 font-medium">{apt.client}</td>
-                <td className="p-4 text-gray-600">{apt.design}</td>
+                <td className="p-4 text-gray-400">{apt.design}</td>
                 <td className="p-4">{apt.date}</td>
                 <td className="p-4">
                   <span className={`px-3 py-1 rounded-full text-sm ${
-                    apt.status === 'confirmed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                    apt.status === 'confirmed' ? 'bg-green-900/30 text-green-400' : 'bg-yellow-900/30 text-yellow-400'
                   }`}>
                     {apt.status}
                   </span>
