@@ -1,0 +1,105 @@
+// inkverse/prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  name          String
+  phone         String?
+  avatarUrl     String?
+  role          Role      @default(CLIENT)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  artist        Artist?
+  appointments  Appointment[] @relation("ClientAppointments")
+}
+
+model Artist {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id])
+  displayName       String
+  bio               String?
+  yearsExperience   Int      @default(0)
+  specializations   String[]
+  hourlyRate        Int?
+  depositRequired   Int      @default(50)
+  rating            Float    @default(0)
+  reviewCount       Int      @default(0)
+  verified          Boolean  @default(false)
+  portfolio         PortfolioItem[]
+  appointments      Appointment[] @relation("ArtistAppointments")
+  reviews           Review[]
+  stripeAccountId   String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model PortfolioItem {
+  id          String   @id @default(uuid())
+  artistId    String
+  artist      Artist   @relation(fields: [artistId], references: [id])
+  title       String
+  imageUrl    String
+  category    String?
+  style       String?
+  createdAt   DateTime @default(now())
+}
+
+model Appointment {
+  id            String        @id @default(uuid())
+  artistId      String
+  artist        Artist        @relation("ArtistAppointments", fields: [artistId], references: [id])
+  clientId      String
+  client        User          @relation("ClientAppointments", fields: [clientId], references: [id])
+  designTitle   String?
+  description   String?
+  scheduledAt   DateTime
+  durationMin  Int           @default(120)
+  location     String?
+  status       AppointmentStatus @default(PENDING)
+  depositAmount Int?
+  depositPaid   Boolean      @default(false)
+  totalPrice    Int?
+  notes         String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  
+  review        Review?
+}
+
+model Review {
+  id            String   @id @default(uuid())
+  appointmentId String   @unique
+  appointment   Appointment @relation(fields: [appointmentId], references: [id])
+  artistId      String
+  artist        Artist   @relation(fields: [artistId], references: [id])
+  clientName    String
+  rating        Int
+  comment       String?
+  imageUrls     String[]
+  createdAt     DateTime @default(now())
+}
+
+enum Role {
+  CLIENT
+  ARTIST
+  ADMIN
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
